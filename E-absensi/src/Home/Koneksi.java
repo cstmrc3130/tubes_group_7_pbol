@@ -5,7 +5,9 @@
  */
 package Home;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,8 +22,8 @@ public class Koneksi {
                 String url = "jdbc:mysql://localhost:3306/eabsent";
                 String user = "root";
                 String pass = "";
-                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-                koneksi = DriverManager.getConnection(url, user, pass);
+                DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+                koneksi  = DriverManager.getConnection(url, user, pass);
                 System.out.println("Connection Successfully");
             }catch (Exception e) {
                 System.out.println("Error");

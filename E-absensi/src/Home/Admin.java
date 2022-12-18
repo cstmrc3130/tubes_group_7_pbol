@@ -646,7 +646,7 @@ public class Admin extends javax.swing.JFrame {
                     +kls.getText()+"','"
                     +prodi.getText()+"','"
                     +jnsklmn.getSelectedItem()+"','"
-                    +notelp.getText()+"', NUll, NULL, NULL)";
+                    +notelp.getText()+"')";
             System.out.println(sql);
             java.sql.Connection con = (java.sql.Connection) Home.Koneksi.getKoneksi();
             java.sql.PreparedStatement stmnt = con.prepareStatement(sql);
@@ -734,7 +734,7 @@ public class Admin extends javax.swing.JFrame {
         tabel.addColumn("Nama");
         tabel.addColumn("NIM");
         tabel.addColumn("Kelas");
-        tabel.addColumn("Jns_Klmn");
+        tabel.addColumn("Jns_Kelamin");
         tabel.addColumn("Prodi");
         tabel.addColumn("No Telpon");
         try {
