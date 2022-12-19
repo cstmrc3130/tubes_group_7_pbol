@@ -170,7 +170,6 @@ private void autoid(){
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Home/icons8_home_45px_2.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
@@ -204,7 +203,6 @@ private void autoid(){
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setFont(new java.awt.Font("Gill Sans MT", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Home/icons8_copybook_45px_1.png"))); // NOI18N
         jButton7.setText("Absensi");
@@ -576,6 +574,11 @@ private void autoid(){
         });
 
         matkul1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-SELECT-" }));
+        matkul1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matkul1ActionPerformed(evt);
+            }
+        });
 
         prtmn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2021-10-03 - 2021-10-09", "2021-10-10 - 2021-10-16", "2021-10-17 - 2021-10-23", "2021-10-24 - 2021-10-30", "2021-10-31 - 2021-11-06", "2021-11-07 - 2021-11-13", "2021-11-14 - 2021-11-20", "2021-11-21 - 2021-11-27", "2021-11-28 - 2021-12-04" }));
         prtmn.addActionListener(new java.awt.event.ActionListener() {
@@ -840,83 +843,9 @@ private void autoid(){
         }
     }
     
-    private String mtkl_plhn1(JComboBox a) {
-        String hsl = "";
+private void show_combo1(){
         try {
-            String sql = "SELECT * FROM mhs WHERE nama='"+a.getSelectedItem()+"'";
-            java.sql.Connection con= (java.sql.Connection) Home.Koneksi.getKoneksi();
-            java.sql.PreparedStatement pst = con.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            
-            while (rs.next()){
-                String result = rs.getString(7);
-                hsl = result;
-                
-            }
-            rs.last();
-            int data = rs.getRow();
-            rs.first();
-            
-        }catch(Exception e){
-            
-        } 
-    return hsl;
-    }
-    
-    private String mtkl_plhn2(JComboBox a) {
-        String hsl = "";
-        try {
-            String sql = "SELECT * FROM mhs WHERE nama='"+a.getSelectedItem()+"'";
-            java.sql.Connection con= (java.sql.Connection) Home.Koneksi.getKoneksi();
-            java.sql.PreparedStatement pst = con.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            
-            while (rs.next()){
-                String result = rs.getString(8);
-                hsl = result;
-                
-            }
-            rs.last();
-            int data = rs.getRow();
-            rs.first();
-            
-        }catch(Exception e){
-            
-        } 
-    return hsl;
-    }
-    
-    private String mtkl_plhn3(JComboBox a) {
-        String hsl = "";
-        try {
-            String sql = "SELECT * FROM mhs WHERE nama='"+a.getSelectedItem()+"'";
-            java.sql.Connection con= (java.sql.Connection) Home.Koneksi.getKoneksi();
-            java.sql.PreparedStatement pst = con.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            
-            while (rs.next()){
-                String result = rs.getString(9);
-                hsl = result;
-                
-            }
-            rs.last();
-            int data = rs.getRow();
-            rs.first();
-            
-        }catch(Exception e){
-            
-        } 
-    return hsl;
-    }
-
-    private void show_combo1(){
-        if (matkul.getItemCount() > 1 ){
-            matkul.removeItemAt(3);
-            matkul.removeItemAt(2);
-            matkul.removeItemAt(1);
-        }
-        try {
-            String sql = "SELECT * FROM matkul WHERE id_matkul = '"+mtkl_plhn1(mhs)+"' OR id_matkul = '"+mtkl_plhn2(mhs)+ "' OR id_matkul = '"+mtkl_plhn3(mhs)+"'";
+            String sql = "SELECT * FROM matkul";
             java.sql.Connection con= (java.sql.Connection) Home.Koneksi.getKoneksi();
             java.sql.PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
@@ -1147,7 +1076,7 @@ private void autoid(){
         tabel.addColumn("Ket");
         try {
             java.sql.Connection con = (java.sql.Connection)Home.Koneksi.getKoneksi();
-            String sql = "SELECT mhs.nim, mhs.nama, matkul.nama_matkul, pertemuan.tgl, absen.ket FROM absen LEFT JOIN mhs ON absen.nim = mhs.nim LEFT JOIN matkul ON absen.id_matkul = matkul.id_matkul LEFT JOIN pertemuan ON absen.id_pertemuan = pertemuan.id_pertemuan";
+            String sql = "SELECT mhs.nim, mhs.nama, matkul.nama_matkul, pertemuan.tgl, absen.ket FROM absen LEFT JOIN mhs ON absen.nim = mhs.nim LEFT JOIN matkul ON absen.id_matkul = matkul.id_matkul LEFT JOIN pertemuan ON absen.tgl = pertemuan.tgl";
             java.sql.PreparedStatement stm = con.prepareStatement(sql);
             ResultSet rs =stm.executeQuery(sql);
             while (rs.next()) {
@@ -1183,7 +1112,7 @@ private void autoid(){
         tabel.addColumn("Alpha");
         try {
             java.sql.Connection con = (java.sql.Connection)Home.Koneksi.getKoneksi();
-            String sql = "SELECT mhs.nim, mhs.nama, SUM(absen.ket = 'Hadir' AND absen.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"'), SUM(absen.ket = 'Izin' AND absen.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"'), SUM(absen.ket = 'Alpha' AND absen.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"') FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.id_pertemuan = pertemuan.id_pertemuan GROUP BY mhs.nim;";
+            String sql = "SELECT mhs.nim, mhs.nama, SUM(absen.ket = 'Hadir' AND absen.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"'), SUM(absen.ket = 'Izin' AND absen.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"'), SUM(absen.ket = 'Alpha' AND absen.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"') FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.tgl = pertemuan.tgl GROUP BY mhs.nim;";
             System.out.println(sql);
             java.sql.PreparedStatement stm = con.prepareStatement(sql);
             ResultSet rs =stm.executeQuery(sql);
@@ -1211,7 +1140,7 @@ private void autoid(){
         tabel.addColumn("Alpha");
         try {
             java.sql.Connection con = (java.sql.Connection)Home.Koneksi.getKoneksi();
-            String sql = "SELECT mhs.nim, mhs.nama, SUM(absen.ket = 'Hadir' AND absen.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"'), SUM(absen.ket = 'Izin' AND absen.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"'), SUM(absen.ket = 'Alpha' AND absen.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"') FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.id_pertemuan = pertemuan.id_pertemuan GROUP BY mhs.nim;";
+            String sql = "SELECT mhs.nim, mhs.nama, SUM(absen.ket = 'Hadir' AND absen.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"'), SUM(absen.ket = 'Izin' AND absen.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"'), SUM(absen.ket = 'Alpha' AND absen.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"') FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.tgl = pertemuan.tgl GROUP BY mhs.nim;";
             System.out.println(sql);
             java.sql.PreparedStatement stm = con.prepareStatement(sql);
             ResultSet rs =stm.executeQuery(sql);
@@ -1239,7 +1168,7 @@ private void autoid(){
             tabel.addColumn("Jumlah Total");
             try {
                 java.sql.Connection con = (java.sql.Connection)Home.Koneksi.getKoneksi();
-                sql = "SELECT absen.ket, COUNT(*) FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.id_pertemuan = pertemuan.id_pertemuan WHERE pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"' GROUP BY absen.ket;";
+                sql = "SELECT absen.ket, COUNT(*) FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.tgl = pertemuan.tgl WHERE pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"' GROUP BY absen.ket;";
                 System.out.println(sql);
                 java.sql.PreparedStatement stm = con.prepareStatement(sql);
                 ResultSet rs =stm.executeQuery(sql);
@@ -1260,7 +1189,7 @@ private void autoid(){
             tabel.addColumn("Jumlah Total");
             try {
                 java.sql.Connection con = (java.sql.Connection)Home.Koneksi.getKoneksi();
-                sql = "SELECT absen.ket, COUNT(*) FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.id_pertemuan = pertemuan.id_pertemuan WHERE pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"' AND matkul.id_matkul = '"+chooseid1(matkul1)+"' GROUP BY absen.ket;";
+                sql = "SELECT absen.ket, COUNT(*) FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.tgl = pertemuan.tgl WHERE pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"' AND matkul.id_matkul = '"+chooseid1(matkul1)+"' GROUP BY absen.ket;";
                 System.out.println(sql);
                 java.sql.PreparedStatement stm = con.prepareStatement(sql);
                 ResultSet rs =stm.executeQuery(sql);
@@ -1285,7 +1214,7 @@ private void autoid(){
             tabel.addColumn("Alpha");
             try {
                 java.sql.Connection con = (java.sql.Connection)Home.Koneksi.getKoneksi();
-                String sql = "SELECT mhs.nim, mhs.nama, SUM(absen.ket = 'Hadir' AND absen.nim = '"+chooseid(mhs1)+"' AND matkul.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"'), SUM(absen.ket = 'Izin' AND absen.nim = '"+chooseid(mhs1)+"' AND matkul.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"'), SUM(absen.ket = 'Alpha' AND absen.nim = '"+chooseid(mhs1)+"' AND matkul.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"') FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.id_pertemuan = pertemuan.id_pertemuan WHERE absen.nim = '"+chooseid(mhs1)+"' GROUP BY mhs.nim;";
+                String sql = "SELECT mhs.nim, mhs.nama, SUM(absen.ket = 'Hadir' AND absen.nim = '"+chooseid(mhs1)+"' AND matkul.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"'), SUM(absen.ket = 'Izin' AND absen.nim = '"+chooseid(mhs1)+"' AND matkul.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"'), SUM(absen.ket = 'Alpha' AND absen.nim = '"+chooseid(mhs1)+"' AND matkul.id_matkul = '"+chooseid1(matkul1)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn) +"') FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.tgl = pertemuan.tgl WHERE absen.nim = '"+chooseid(mhs1)+"' GROUP BY mhs.nim;";
                 System.out.println(sql);
                 java.sql.PreparedStatement stm = con.prepareStatement(sql);
                 ResultSet rs =stm.executeQuery(sql);
@@ -1314,7 +1243,7 @@ private void autoid(){
             tabel.addColumn("Jumlah Total");
             try {
                 java.sql.Connection con = (java.sql.Connection)Home.Koneksi.getKoneksi();
-                sql = "SELECT absen.ket, COUNT(*) FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.id_pertemuan = pertemuan.id_pertemuan WHERE pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"' GROUP BY absen.ket;";
+                sql = "SELECT absen.ket, COUNT(*) FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.tgl = pertemuan.tgl WHERE pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"' GROUP BY absen.ket;";
                 System.out.println(sql);
                 java.sql.PreparedStatement stm = con.prepareStatement(sql);
                 ResultSet rs =stm.executeQuery(sql);
@@ -1335,7 +1264,7 @@ private void autoid(){
             tabel.addColumn("Jumlah Total");
             try {
                 java.sql.Connection con = (java.sql.Connection)Home.Koneksi.getKoneksi();
-                sql = "SELECT absen.ket, COUNT(*) FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.id_pertemuan = pertemuan.id_pertemuan WHERE pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"' AND matkul.id_matkul = '"+chooseid1(matkul2)+"' GROUP BY absen.ket;";
+                sql = "SELECT absen.ket, COUNT(*) FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.tgl = pertemuan.tgl WHERE pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"' AND matkul.id_matkul = '"+chooseid1(matkul2)+"' GROUP BY absen.ket;";
                 System.out.println(sql);
                 java.sql.PreparedStatement stm = con.prepareStatement(sql);
                 ResultSet rs =stm.executeQuery(sql);
@@ -1360,7 +1289,7 @@ private void autoid(){
             tabel.addColumn("Alpha");
             try {
                 java.sql.Connection con = (java.sql.Connection)Home.Koneksi.getKoneksi();
-                String sql = "SELECT mhs.nim, mhs.nama, SUM(absen.ket = 'Hadir' AND absen.nim = '"+chooseid(mhs2)+"' AND matkul.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"'), SUM(absen.ket = 'Izin' AND absen.nim = '"+chooseid(mhs2)+"' AND matkul.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"'), SUM(absen.ket = 'Alpha' AND absen.nim = '"+chooseid(mhs2)+"' AND matkul.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"') FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.id_pertemuan = pertemuan.id_pertemuan WHERE absen.nim = '"+chooseid(mhs2)+"' GROUP BY mhs.nim;";
+                String sql = "SELECT mhs.nim, mhs.nama, SUM(absen.ket = 'Hadir' AND absen.nim = '"+chooseid(mhs2)+"' AND matkul.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"'), SUM(absen.ket = 'Izin' AND absen.nim = '"+chooseid(mhs2)+"' AND matkul.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"'), SUM(absen.ket = 'Alpha' AND absen.nim = '"+chooseid(mhs2)+"' AND matkul.id_matkul = '"+chooseid1(matkul2)+"' AND pertemuan.tgl BETWEEN '"+ tgl_between(prtmn1) +"') FROM mhs JOIN absen ON mhs.nim = absen.nim JOIN matkul ON absen.id_matkul = matkul.id_matkul JOIN pertemuan ON absen.tgl = pertemuan.tgl WHERE absen.nim = '"+chooseid(mhs2)+"' GROUP BY mhs.nim;";
                 System.out.println(sql);
                 java.sql.PreparedStatement stm = con.prepareStatement(sql);
                 ResultSet rs =stm.executeQuery(sql);
@@ -1489,6 +1418,10 @@ private void autoid(){
     private void mhs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mhs2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mhs2ActionPerformed
+
+    private void matkul1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matkul1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_matkul1ActionPerformed
     public void setColor(JPanel p) {
         p.setBackground(new Color(124,146,160));
     }

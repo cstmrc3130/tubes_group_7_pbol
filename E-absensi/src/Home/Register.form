@@ -96,7 +96,7 @@
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Home/Logo Unmul Universitas Mulawarman.png"/>
+                  <Image iconType="3" name="/Home/Logo_of_North_Sumatra_University.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -338,6 +338,7 @@
               </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nimFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nimFocusLost"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="kls">

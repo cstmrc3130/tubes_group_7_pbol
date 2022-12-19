@@ -80,7 +80,7 @@ public class Register extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(253, 184, 39));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Home/Logo Unmul Universitas Mulawarman.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Home/Logo_of_North_Sumatra_University.png"))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Gill Sans MT", 1, 21)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(58, 71, 80));
@@ -164,6 +164,9 @@ public class Register extends javax.swing.JFrame {
         nim.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nimFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nimFocusLost(evt);
             }
         });
 
@@ -465,7 +468,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_namaFocusGained
 
     private void namaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaFocusLost
-
+        nama.setText("Nama");
     }//GEN-LAST:event_namaFocusLost
 
     private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
@@ -477,7 +480,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_klsFocusGained
 
     private void klsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_klsFocusLost
-        // TODO add your handling code here:
+        kls.setText("Kelas");
     }//GEN-LAST:event_klsFocusLost
 
     private void klsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_klsActionPerformed
@@ -520,11 +523,12 @@ public class Register extends javax.swing.JFrame {
         }else {
             try{
                 Connection c = Koneksi.getKoneksi();
-                String sql = "INSERT INTO user VALUES (?, ?, ?)";
+                String sql = "INSERT INTO user VALUES (?, ?, ?, ?)";
                 PreparedStatement p = c.prepareStatement(sql);
                 p.setString(1, id);
                 p.setString(2, username);
                 p.setString(3, password);
+                p.setString(4, "mahasiswa");
                 p.executeUpdate();
                 p.close();
                 JOptionPane.showMessageDialog(null, "Akun Berhasil Dibuat");
@@ -560,11 +564,11 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_nimFocusGained
 
     private void prodiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prodiFocusGained
-        // TODO add your handling code here:
+        prodi.setText("");
     }//GEN-LAST:event_prodiFocusGained
 
     private void prodiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prodiFocusLost
-        // TODO add your handling code here:
+        prodi.setText("Prodi");
     }//GEN-LAST:event_prodiFocusLost
 
     private void prodiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodiActionPerformed
@@ -572,16 +576,20 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_prodiActionPerformed
 
     private void notelpFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_notelpFocusGained
-        // TODO add your handling code here:
+        notelp.setText("");
     }//GEN-LAST:event_notelpFocusGained
 
     private void notelpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_notelpFocusLost
-        // TODO add your handling code here:
+        notelp.setText("Nomor Telepon");
     }//GEN-LAST:event_notelpFocusLost
 
     private void notelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notelpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_notelpActionPerformed
+
+    private void nimFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nimFocusLost
+       nim.setText("NIM");
+    }//GEN-LAST:event_nimFocusLost
     
     /**
      * @param args the command line arguments
