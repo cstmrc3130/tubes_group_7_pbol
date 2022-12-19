@@ -346,7 +346,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_statActionPerformed
 
     private void statFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_statFocusLost
-        stat.setText("Status");
+        stat.getText();
     }//GEN-LAST:event_statFocusLost
 
     private void statFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_statFocusGained
@@ -413,7 +413,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void passFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passFocusLost
-        pass.setText("******");
+        
     }//GEN-LAST:event_passFocusLost
 
     private void passFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passFocusGained
@@ -425,7 +425,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_usrnameActionPerformed
 
     private void usrnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usrnameFocusLost
-        usrname.setText("Username");
+        usrname.getText();
     }//GEN-LAST:event_usrnameFocusLost
 
     private void usrnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usrnameFocusGained

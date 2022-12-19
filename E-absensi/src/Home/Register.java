@@ -468,7 +468,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_namaFocusGained
 
     private void namaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaFocusLost
-        nama.setText("Nama");
+        nama.getText();
     }//GEN-LAST:event_namaFocusLost
 
     private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
@@ -480,7 +480,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_klsFocusGained
 
     private void klsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_klsFocusLost
-        kls.setText("Kelas");
+        kls.getText();
     }//GEN-LAST:event_klsFocusLost
 
     private void klsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_klsActionPerformed
@@ -568,7 +568,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_prodiFocusGained
 
     private void prodiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prodiFocusLost
-        prodi.setText("Prodi");
+        prodi.getText();
     }//GEN-LAST:event_prodiFocusLost
 
     private void prodiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodiActionPerformed
@@ -580,7 +580,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_notelpFocusGained
 
     private void notelpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_notelpFocusLost
-        notelp.setText("Nomor Telepon");
+        notelp.getText();
     }//GEN-LAST:event_notelpFocusLost
 
     private void notelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notelpActionPerformed
@@ -588,7 +588,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_notelpActionPerformed
 
     private void nimFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nimFocusLost
-       nim.setText("NIM");
+       nim.getText();
     }//GEN-LAST:event_nimFocusLost
     
     /**
