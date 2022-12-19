@@ -396,6 +396,12 @@ public class Login extends javax.swing.JFrame {
                     this.dispose();
                     AbsenMahasiswa b = new AbsenMahasiswa();
                     b.setVisible(true);}
+                else if ("dosen".equals(statu)){
+                    JOptionPane.showMessageDialog(null, "Login Berhasil");
+                    this.dispose();
+                    AbsenGuru d = new AbsenGuru();
+                    d.setVisible(true);
+                }
                 else {
                     JOptionPane.showMessageDialog(null, "Login Berhasil");
                     this.dispose();

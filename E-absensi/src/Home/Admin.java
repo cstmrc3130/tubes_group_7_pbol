@@ -336,7 +336,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Pencarian");
 
-        txcari.setText("Pencarian");
         txcari.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txcariFocusGained(evt);
@@ -451,7 +450,7 @@ public class Admin extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -507,7 +506,7 @@ public class Admin extends javax.swing.JFrame {
                                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel3, "card2");
@@ -634,7 +633,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btncariMouseExited
 
     private void txcariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txcariFocusGained
-
+        
     }//GEN-LAST:event_txcariFocusGained
 
     private void tmbhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tmbhActionPerformed
@@ -643,8 +642,8 @@ public class Admin extends javax.swing.JFrame {
                     +nama.getText()+"','"
                     +nim.getText()+"','"
                     +kls.getText()+"','"
-                    +prodi.getText()+"','"
                     +jnsklmn.getSelectedItem()+"','"
+                    +prodi.getText()+"','"
                     +notelp.getText()+"')";
             System.out.println(sql);
             java.sql.Connection con = (java.sql.Connection) Home.Koneksi.getKoneksi();

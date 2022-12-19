@@ -78,7 +78,7 @@ public class Register extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(30, 36, 41));
 
-        jPanel2.setBackground(new java.awt.Color(253, 184, 39));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Home/Logo_of_North_Sumatra_University.png"))); // NOI18N
 
@@ -105,12 +105,12 @@ public class Register extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addGap(68, 68, 68)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(58, 71, 80));
+        jPanel3.setBackground(new java.awt.Color(0, 153, 0));
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,7 +137,7 @@ public class Register extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Confirm Password");
 
-        nama.setBackground(new java.awt.Color(58, 71, 80));
+        nama.setBackground(new java.awt.Color(0, 153, 0));
         nama.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         nama.setForeground(new java.awt.Color(204, 204, 204));
         nama.setText("Nama");
@@ -156,7 +156,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
-        nim.setBackground(new java.awt.Color(58, 71, 80));
+        nim.setBackground(new java.awt.Color(0, 153, 0));
         nim.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         nim.setForeground(new java.awt.Color(204, 204, 204));
         nim.setText("NIM");
@@ -170,7 +170,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
-        kls.setBackground(new java.awt.Color(58, 71, 80));
+        kls.setBackground(new java.awt.Color(0, 153, 0));
         kls.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         kls.setForeground(new java.awt.Color(204, 204, 204));
         kls.setText("Kelas");
@@ -189,7 +189,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
-        conpass.setBackground(new java.awt.Color(58, 71, 80));
+        conpass.setBackground(new java.awt.Color(0, 153, 0));
         conpass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         conpass.setForeground(new java.awt.Color(204, 204, 204));
         conpass.setText("Password");
@@ -263,7 +263,7 @@ public class Register extends javax.swing.JFrame {
             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
         );
 
-        pass.setBackground(new java.awt.Color(58, 71, 80));
+        pass.setBackground(new java.awt.Color(0, 153, 0));
         pass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         pass.setForeground(new java.awt.Color(204, 204, 204));
         pass.setText("Password");
@@ -284,7 +284,7 @@ public class Register extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Program Studi");
 
-        prodi.setBackground(new java.awt.Color(58, 71, 80));
+        prodi.setBackground(new java.awt.Color(0, 153, 0));
         prodi.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         prodi.setForeground(new java.awt.Color(204, 204, 204));
         prodi.setText("Program Studi");
@@ -308,7 +308,7 @@ public class Register extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("No Telpon");
 
-        notelp.setBackground(new java.awt.Color(58, 71, 80));
+        notelp.setBackground(new java.awt.Color(0, 153, 0));
         notelp.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         notelp.setForeground(new java.awt.Color(204, 204, 204));
         notelp.setText("08123456789");
@@ -327,7 +327,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
-        jnsklmn.setBackground(new java.awt.Color(58, 71, 80));
+        jnsklmn.setBackground(new java.awt.Color(0, 153, 0));
         jnsklmn.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jnsklmn.setForeground(new java.awt.Color(245, 245, 245));
         jnsklmn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki - Laki", "Perempuan" }));
